@@ -10,9 +10,9 @@ namespace :wp do
       # Get the server web user
       web_user = fetch(:web_user)
       
-      execute :chmod, "664 #{shared_path}/.htaccess"
-      execute :chmod, "-R 775 #{shared_path}/content/uploads"
-      execute :chown, ":#{web_user} #{shared_path}/content/uploads"
+      execute :sudo, :chmod, "664 #{shared_path}/.htaccess"
+      execute :sudo, :chmod, "-R 775 #{shared_path}/content/uploads"
+      execute :sudo, :chown, ":#{web_user} #{shared_path}/content/uploads"
     end
   end
 
